@@ -151,7 +151,7 @@ public class GetMovieInfo {
 		//接收size
 		int size = 5;
 		//接收推荐类型参数
-		String recommendType = "itemBased";
+		String recommendType = "userBased";
 		GetMovieInfo getMovieInfo = new GetMovieInfo();
 		//用户的所有电影
 		ArrayList<MovieInfo> ownMovieInfo = getMovieInfo.getMovieByUserId(userId);
