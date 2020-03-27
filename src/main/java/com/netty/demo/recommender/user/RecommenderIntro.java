@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.user;
 
 import org.apache.mahout.cf.taste.impl.common.FastByIDMap;
 import org.apache.mahout.cf.taste.impl.model.GenericDataModel;

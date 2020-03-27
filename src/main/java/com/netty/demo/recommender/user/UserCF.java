@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.user;
 
 import java.util.*;
 

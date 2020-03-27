@@ -1,8 +1,10 @@
 /**
  * 获得电影的信息
  */
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.comm;
 
+import com.netty.demo.recommender.item.MyItemBasedRecommender;
+import com.netty.demo.recommender.user.MyUserBasedRecommender;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Configuration;

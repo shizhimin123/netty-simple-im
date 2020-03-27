@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.item;
 
 import org.apache.mahout.cf.taste.impl.common.LongPrimitiveIterator;
 import org.apache.mahout.cf.taste.impl.model.file.FileDataModel;

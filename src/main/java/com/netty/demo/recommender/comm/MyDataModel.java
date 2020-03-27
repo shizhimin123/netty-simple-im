@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.comm;
 
 import org.apache.mahout.cf.taste.impl.model.jdbc.MySQLJDBCDataModel;
 import org.apache.mahout.cf.taste.model.JDBCDataModel;

@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.comm;
 
 import org.springframework.stereotype.Component;
 

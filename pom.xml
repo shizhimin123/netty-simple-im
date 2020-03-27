@@ -35,7 +35,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
+        <!--netty-->
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
@@ -80,7 +80,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--mahout算法-->
         <dependency>
             <groupId>org.apache.mahout</groupId>
             <artifactId>mahout-integration</artifactId>

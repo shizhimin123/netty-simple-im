@@ -1,5 +1,6 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.user;
 
+import com.netty.demo.recommender.comm.MyDataModel;
 import org.apache.mahout.cf.taste.impl.neighborhood.*;
 import org.apache.mahout.cf.taste.impl.recommender.*;
 import org.apache.mahout.cf.taste.impl.similarity.*;

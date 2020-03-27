@@ -1,4 +1,4 @@
-package com.netty.demo.recommender;
+package com.netty.demo.recommender.comm;
 
 public class Rating {
 	private int user_id;
