@@ -17,9 +17,10 @@ import java.util.List;
 
 /**
  * @Description: BasedUserRecommendationTest
- * @Author: shizhimin
- * @Date: 2020/3/25
- * @Version: 1.0
+ * 不考虑用户、物品的属性（特征）信息，它主要是根据用户对物品的偏好（Preference）信息，
+ * 发掘不同用户之间口味（Taste）的相似性，使用这种用户相似性来进行个性化推荐。
+ * 基于用户的协同过滤推荐，它是以用户为中心，观察与该用户兴趣相似的一个用户的群体，
+ * 将这个兴趣相似的用户群体所感兴趣的其他物品，推荐给该用户。
  */
 public class BasedUserRecommendationTest {
 

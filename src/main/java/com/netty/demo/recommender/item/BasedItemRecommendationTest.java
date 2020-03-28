@@ -14,9 +14,11 @@ import java.util.List;
 
 /**
  * @Description: BasedItemRecommendationTest
- * @Author: shizhimin
- * @Date: 2020/3/25
- * @Version: 1.0
+ * 也不考虑用户、物品的属性（特征）信息，它也是根据用户对物品的偏好（Preference）信息，发掘不同物品之间的相似性。
+ * 基于物品的协同过滤推荐，是以物品为中心，通过观察用户对物品的偏好行为，将相似的物品计算出来，
+ * 可以认为这些相似的物品属于特定的一组类别，
+ * 然后根据某个用户的历史兴趣计算其所属的类别，
+ * 然后看该类别是否属于这些成组类别中的一个，最后将属于成组类别所对应的物品推荐给该用户。
  */
 public class BasedItemRecommendationTest {
 
