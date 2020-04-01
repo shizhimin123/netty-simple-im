@@ -27,6 +27,10 @@ spring:
     database: MYSQL
     show-sql: true
 
+hbase:
+  conf:
+    confMaps:
+    'hbase.zookeeper.quorum' : 'localhost:2181'
 
 
 
