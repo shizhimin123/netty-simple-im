@@ -87,6 +87,12 @@
             <version>1.1.9</version>
         </dependency>
 
+        <!-- mongodb -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+
         <!-- thymeleaf 模板引擎 starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

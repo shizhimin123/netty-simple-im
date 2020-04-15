@@ -26,6 +26,9 @@ spring:
   jpa:
     database: MYSQL
     show-sql: true
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/gaode
 
 hbase:
   conf:

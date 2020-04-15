@@ -13,7 +13,7 @@ public class DemoTest {
 
     @Test
     public void testCreateTable() {
-        HbaseDemo.createTable("dr_ps", "trademark", "dr_type", "service_id");
+        HbaseDemo.createTable("con", "log");
     }
 
     @Test
