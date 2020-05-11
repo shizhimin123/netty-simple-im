@@ -3,10 +3,14 @@ package com.netty.demo.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.mongodb.WriteResult;
 import com.mongodb.client.result.UpdateResult;
+import com.netty.demo.controller.mapper.AreaMapper;
 import com.netty.demo.pojo.Area;
+import com.netty.demo.pojo.AreaZone;
 import com.netty.demo.pojo.Town;
+import com.netty.demo.pojo.Village;
 import javafx.util.Pair;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.hadoop.yarn.webapp.hamlet.Hamlet;
@@ -28,6 +32,8 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 
@@ -43,6 +49,8 @@ public class MongoDBController {
 
     @Autowired
     private MongoTemplate mongoTemplate;
+    @Autowired
+    private AreaMapper areaMapper;
 
     @GetMapping(value = "/updateMongoData")
     public void updateMongoData(Integer currentPage) {
@@ -110,6 +118,57 @@ public class MongoDBController {
                     }
                 }
                 apiNum ++;
+            }
+        }
+    }
+
+    @GetMapping(value = "/integrationArea")
+    public void integrationArea() {
+        //1.查找1000条数据
+        int pageSize = 1000;
+        Query query = new Query();
+        int totalCount = (int) mongoTemplate.count(query, Area.class);
+        int totalPage = totalCount % pageSize == 0 ? totalCount / pageSize : totalCount / pageSize + 1;
+        for (int i = 0;i <= totalPage;i ++){
+            query = new Query();
+            query.skip((i - 1) * pageSize).limit(pageSize);
+            List<Village> records = mongoTemplate.find(query, Village.class);
+            if (records.size() > 0){
+                for (Village record : records) {
+                    //2.将查找出该条数据的归属地  整合数据  判断行政编码是否正确
+                    QueryWrapper<AreaZone> queryWrapper = new QueryWrapper<AreaZone>();
+                    queryWrapper.eq("level", 4).eq("id",record.getAdcode());
+                    AreaZone areaZone = areaMapper.selectOne(queryWrapper);
+                    if (null != areaZone){
+                        queryWrapper = new QueryWrapper<AreaZone>();
+                        queryWrapper.eq("level", 5).eq("pid",record.getAdcode());
+                        List<AreaZone> areaZones = areaMapper.selectList(queryWrapper);
+                        //3.同时查出该乡镇的所有行政村委 判断该村是否是自然村还是行政村
+                        boolean match = false;
+                        if (null != areaZones && areaZones.size() > 0){
+                            match = areaZones.stream()
+                                    .noneMatch((e) ->{
+                                        Pattern p = Pattern.compile(e.getName());
+                                        Matcher m = p.matcher(record.getName());
+                                        return m.matches();
+                                    });
+                        }
+                        if (match){
+                            //3.更新数据 删除原表数据
+
+                            return;
+
+                        }
+                        //4.行政编码生成策略
+
+                    }
+                    //5.插入到新表 删除原表数据
+                    int result = areaMapper.insert(null);
+                    if (result > 0){
+                        query = new Query();
+                        mongoTemplate.findAndRemove(query,Village.class);
+                    }
+                }
             }
         }
     }
